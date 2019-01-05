@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private final Activity tempRef = this;
     private WebView webView;
     private Button amber;
     private Button crimson;
+    private Button reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(tempRef, "Crimson Clearance Unlocked!",
                         Toast.LENGTH_LONG).show();
                 crimson.setEnabled(false);
+            }
+        });
+
+        reset = (Button) findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl("https://www.monarchsciences.com/");
+                Toast.makeText(tempRef, "Page Refreshed!",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
