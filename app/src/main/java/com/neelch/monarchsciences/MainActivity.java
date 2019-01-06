@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 webView.loadUrl("https://www.monarchsciences.com/");
                 Toast.makeText(tempRef, "Page Refreshed!",
                         Toast.LENGTH_LONG).show();
+                amber.setEnabled(true);
+                crimson.setEnabled(true);
             }
         });
     }
