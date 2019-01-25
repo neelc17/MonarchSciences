@@ -70,4 +70,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            Toast.makeText(this, "Back pressed", Toast.LENGTH_LONG).show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
