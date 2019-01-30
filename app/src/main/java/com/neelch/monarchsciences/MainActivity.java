@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button amber;
     private Button crimson;
     private Button reset;
+    private int modalsShowing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(this, "android");
         webView.loadUrl("https://www.monarchsciences.com/");
 
         amber = (Button) findViewById(R.id.amber);
@@ -69,13 +71,50 @@ public class MainActivity extends AppCompatActivity {
                 crimson.setEnabled(true);
             }
         });
+
+        modalsShowing = -1;
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            Toast.makeText(this, "Back pressed", Toast.LENGTH_LONG).show();
+            webView.loadUrl("javascript:android.onData(ModalManager.modalsShowing)");
+            String s = waitForModal();
+            if(s.equals("")) {
+                Toast.makeText(tempRef, "Took too long to load (more than 10 seconds)",
+                        Toast.LENGTH_LONG).show();
+                return true;
+            } else {
+                boolean result = Boolean.parseBoolean(s);
+                if(result){
+                    webView.loadUrl("javascript:ModalManager.closeModals()");
+                    return true;
+                } else {
+                    return super.onKeyDown(keyCode, event);
+                }
+            }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @JavascriptInterface
+    public void onData(String value) {
+        if(value.equals("true")) modalsShowing = 1;
+        else modalsShowing = 0;
+    }
+
+    public String waitForModal(){
+        long start = System.currentTimeMillis();
+        String value = "";
+        while(true){
+            if(System.currentTimeMillis() - start > 5000) break;
+            if(modalsShowing != -1){
+                if(modalsShowing == 0) value = "false";
+                else value = "true";
+                break;
+            }
+        }
+        modalsShowing = -1;
+        return value;
     }
 }
