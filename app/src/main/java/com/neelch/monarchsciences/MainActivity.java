@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             webView.loadUrl("javascript:android.onData(ModalManager.modalsShowing)");
             String s = waitForModal();
             if(s.equals("")) {
-                Toast.makeText(tempRef, "Took too long to load (more than 10 seconds)",
+                Toast.makeText(tempRef, "Took too long to load!",
                         Toast.LENGTH_LONG).show();
                 return true;
             } else {
