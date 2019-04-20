@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             e.getStackTrace();
         }
+
         setContentView(R.layout.activity_main);
 
         webView = (WebView) findViewById(R.id.webView1);
