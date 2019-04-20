@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#000000"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.neelch.monarchsciences.MainActivity">
 
@@ -18,21 +18,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="Unlock Amber" />
+            android:text="Unlock Amber"
+            android:background="@drawable/button_border"
+            android:textColor="#FFFFFF"
+            android:layout_margin="2dp" />
 
         <Button
             android:id="@+id/reset"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:text="Reset" />
+            android:text="Reset"
+            android:background="@drawable/button_border"
+            android:textColor="#FFFFFF"
+            android:layout_margin="2dp" />
 
         <Button
             android:id="@+id/crimson"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.4"
-            android:text="Unlock Crimson" />
+            android:text="Unlock Crimson"
+            android:background="@drawable/button_border"
+            android:textColor="#FFFFFF"
+            android:layout_margin="2dp" />
 
     </LinearLayout>
 

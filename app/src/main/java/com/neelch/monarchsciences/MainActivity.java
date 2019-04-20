@@ -1,6 +1,8 @@
 package com.neelch.monarchsciences;
 
 import android.app.Activity;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,8 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +76,14 @@ public class MainActivity extends AppCompatActivity {
                 crimson.setEnabled(true);
             }
         });
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/futura_book.ttf");
+        amber.setTypeface(font);
+        crimson.setTypeface(font);
+        reset.setTypeface(font);
+
+        if (Build.VERSION.SDK_INT >= 21)
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         modalsShowing = -1;
     }
