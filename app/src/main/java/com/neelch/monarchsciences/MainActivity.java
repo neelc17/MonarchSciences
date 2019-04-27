@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(tempRef, "Amber Clearance Unlocked!",
                         Toast.LENGTH_LONG).show();
                 amber.setEnabled(false);
+                amber.setAlpha(0.5f);
             }
         });
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(tempRef, "Crimson Clearance Unlocked!",
                         Toast.LENGTH_LONG).show();
                 crimson.setEnabled(false);
+                crimson.setAlpha(0.5f);
             }
         });
 
@@ -73,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(tempRef, "Page Refreshed!",
                         Toast.LENGTH_LONG).show();
                 amber.setEnabled(true);
+                amber.setAlpha(1.0f);
                 crimson.setEnabled(true);
+                crimson.setAlpha(1.0f);
             }
         });
 
